@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Perguntas do Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: white;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+    }
+    .top-bar {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+    .icon-btn {
+      background: yellow;
+      border: none;
+      border-radius: 8px;
+      padding: 10px;
+      cursor: pointer;
+    }
+    .quiz-area {
+      display: flex;
+      margin-top: 3rem;
+    }
+    .left-side {
+     width: 50%;
+     margin-left: 5rem;
+    }
+    .question {
+      border-radius: 6px;
+      background: yellow;
+      padding: 15px;
+      height: 4rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .image-box {
+      background: lightgray;
+      height: 18rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+    }
+    .right-side {
+        margin-top: 1.5rem;
+      margin-left: 5rem;
+      width: 32%;
+    }
+    
+    .opcao {
+      background: lightgray;
+      margin-bottom: 1rem;
+      height: 4.5rem;
+      padding: 15px;
+      cursor: pointer;
+      border: none;
+      border-radius: 6px;
+      font-size: 1em;
+      width: 100%;
+      text-align: left;
+      transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.3s;
+     
+    }
+
+    .opcao:hover {
+      transform: translateY(3px); 
+    }
+
+    .opcao.certa.clicked {
+      background-color: #4ea54e;
+      color: #ffffff;
+    }
+
+     .opcao.errada.clicked {
+      background-color: #f53100;
+      color: #ffffff;
+    }
+    
+    .modal, .slide-down {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      display: none;
+    }
+    .modal-content, .slide-content {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    .yellow-btn {
+      background: yellow;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      margin: 10px;
+      cursor: pointer;
+    }
+    .gray-btn {
+      background: lightgray;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      margin: 10px;
+      cursor: pointer;
+    }
+    .slide-down {
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 100px;
+      transition: transform 0.3s ease;
+    }
+
+    .um{
+        background: #A4A701;
+    }
+
+    .dois{
+        background: #A45BE8;
+    }
+
+    .tres{
+        background: #F5721B;
+    }
+
+    .quatro{
+        background: #19BCAC;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="top-bar">
+      <button class="icon-btn" id="btnDica">💡</button>
+      <button class="icon-btn" id="btnConfig">⚙️</button>
+    </div>
+    <div class="quiz-area">
+      <div class="left-side">
+        <div class="question">PERGUNTA</div>
+        <div class="image-box">imagem</div>
+      </div>
+      <div class="right-side">
+        <button class="opcao um certa">alternativas</button>
+        <button class="opcao dois errada"></button>
+        <button class="opcao tres errada"></button>
+        <button class="opcao quatro errada"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Dica -->
+  <div class="modal" id="modalDica">
+    <div class="modal-content" id="dicaPergunta">
+      <h3>DICAS</h3>
+      <p>Estão disponíveis 3 dicas para resolver cada questão, mas uma delas é falsa. Utilizar dica?</p>
+      <button class="yellow-btn" id="btnUsarDica">Utilizar</button>
+      <button class="gray-btn" onclick="fecharModalDica()">Deixa Queto</button>
+    </div>
+    <div class="modal-content" id="dicaResposta" style="display: none;">
+      <p>1. A dica verdadeira<br>2. Outra dica útil<br>3. Uma falsa disfarçada 😈</p>
+    </div>
+  </div>
+
+  <!-- Slide Configuração -->
+  <div class="slide-down" id="slideConfig">
+    <div class="slide-content" style="background: yellow;">
+      <p>Vai deixar pela Metade?</p>
+      <p style="font-size: 2em;">😢</p>
+      <div style="background: lightgray; padding: 10px;">Faltam só mais algumas questões</div>
+      <button class="gray-btn" onclick="fecharSlide()">Continuar</button>
+      <a href="inicio.html"><button class="gray-btn">Sair</button></a>
+    </div>
+  </div>
+
+  <script>
+    const modalDica = document.getElementById('modalDica');
+    const slideConfig = document.getElementById('slideConfig');
+    const dicaPergunta = document.getElementById('dicaPergunta');
+    const dicaResposta = document.getElementById('dicaResposta');
+
+    document.getElementById('btnDica').addEventListener('click', () => {
+      modalDica.style.display = 'flex';
+    });
+
+    function fecharModalDica() {
+      modalDica.style.display = 'none';
+      dicaPergunta.style.display = 'block';
+      dicaResposta.style.display = 'none';
+    }
+
+    document.getElementById('btnUsarDica').addEventListener('click', () => {
+      dicaPergunta.style.display = 'none';
+      dicaResposta.style.display = 'block';
+    });
+
+    document.getElementById('btnConfig').addEventListener('click', () => {
+      slideConfig.style.display = 'flex';
+    });
+
+    function fecharSlide() {
+      slideConfig.style.display = 'none';
+    }
+
+
+
+
+     document.querySelectorAll('.opcao').forEach(botao => {
+      botao.addEventListener('click', function () {
+        const destino = this.getAttribute('data-url');
+        const botaoAtual = this;
+
+        setTimeout(() => {
+          botaoAtual.classList.add('clicked');
+          setTimeout(() => {
+            window.location.href = destino;
+          }, 700); // espera um pouco depois de amarelar
+        }, 200); // espera 1 segundo antes de mudar a cor
+      });
+    });
+
+     let pontuacao = 0;
+
+  const opcoes = document.querySelectorAll('.opcao');
+  const spanPontuacao = document.getElementById('pontuacao');
+
+  opcoes.forEach(opcao => {
+    opcao.addEventListener('click', () => {
+      if (opcao.classList.contains('certa')) {
+        pontuacao += 10;
+        spanPontuacao.textContent = pontuacao;
+      }
+    });
+  });
+  </script>
+
+ <!--   <div id="resultadoFinal"></div>
+<button onclick="mostrarResultado()">Finalizar</button>
+
+function mostrarResultado() {
+  document.getElementById("resultadoFinal").textContent =
+    "Sua pontuação final foi: " + pontuacao;
+}
+    --> 
+
+</body>
+</html>
