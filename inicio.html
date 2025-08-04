@@ -32,27 +32,8 @@
   transition: background-color 0.3s, color 0.3s, background-image 0.3s;
     }
 
-    body.dark {
-        color: #dbd8ce;
-
-       background-image: url('./fundos/modoEscuro.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  
-  transition: background-color 0.3s, color 0.3s, background-image 0.3s;
-    }
-
-     body.dark .cta button{
-      background-color: #363222;
-      color: #f7cb00;
-     }
-
-     body.dark footer{
-      background-color: #363222;
-      color: #f7cb00;
-     }
-
+   
+    
     header {
       display: flex;
       justify-content: space-between;
@@ -170,27 +151,7 @@
       font-weight: 500;
     }
 
-    .modo-escuro-btn {
-      position: fixed;
-      bottom: 1rem;
-      right: 1rem;
-      background-color: #f7cb00;
-      border: none;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      transition: transform 0.2s;
-    }
-
-    .modo-escuro-btn:hover {
-      transform: scale(1.1) rotate(20deg);
-    }
-
+   
     .score {
       display: flex;
       gap: 0.5rem;
@@ -238,24 +199,5 @@
     &copy; 2025 Think Fast | Feito pelo 2DS B</a>
   </footer>
 
-  <button class="modo-escuro-btn" id="toggleTheme">🌙</button>
-
-  <script>
-    const btn = document.getElementById('toggleTheme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const savedTheme = localStorage.getItem('theme');
-
-    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-      document.body.classList.add('dark');
-      btn.textContent = '☀️';
-    }
-
-    btn.addEventListener('click', () => {
-      document.body.classList.toggle('dark');
-      const isDark = document.body.classList.contains('dark');
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
-      btn.textContent = isDark ? '☀️' : '🌙';
-    });
-  </script>
 </body>
 </html>
