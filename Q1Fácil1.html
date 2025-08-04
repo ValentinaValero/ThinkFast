@@ -10,7 +10,24 @@
       margin: 0;
       padding: 0;
       background: white;
+
+      background-image: url('./fundos/modoClaro.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      
+      transition: background-color 0.3s, color
     }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: linear-gradient(to bottom, #f7ca00a9, #db8c3100);
+      font-weight: 600;
+    }
+
     .container {
       display: flex;
       flex-direction: column;
@@ -147,6 +164,11 @@
   </style>
 </head>
 <body>
+  <header>
+    <div class="score">🏆 <span id="pontuacao">2350 pts</span></div>
+  </header>
+
+
   <div class="container">
     <div class="top-bar">
       <button class="icon-btn" id="btnDica">💡</button>
@@ -154,14 +176,14 @@
     </div>
     <div class="quiz-area">
       <div class="left-side">
-        <div class="question">PERGUNTA</div>
+        <div class="question">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget ligula eu lectus lobortis condimentum. Aliquam nonummy auctor massa. Pellentesque habitant</div>
         <div class="image-box">imagem</div>
       </div>
       <div class="right-side">
-        <button class="opcao um certa">alternativas</button>
-        <button class="opcao dois errada"></button>
-        <button class="opcao tres errada"></button>
-        <button class="opcao quatro errada"></button>
+        <button class="opcao um certa">lobortis condimentum. Aliquam nonummy auctor massa.</button>
+        <button class="opcao dois errada">lobortis condimentum. Aliquam nonummy auctor massa.</button>
+        <button class="opcao tres errada">lobortis condimentum. Aliquam nonummy auctor massa.</button>
+        <button class="opcao quatro errada">lobortis condimentum. Aliquam nonummy auctor massa.</button>
       </div>
     </div>
   </div>
@@ -262,3 +284,4 @@ function mostrarResultado() {
 
 </body>
 </html>
+
