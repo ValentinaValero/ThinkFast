@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quiz Spyware</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Galindo&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Galindo', cursive;
+    }
+
+    body {
+      margin: 0;
+      background: #fff;
+      color: #ffff;
+      overflow: hidden;
+      background-image: url('./fundos/modoEscuro.png');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      transition: background-color 0.3s, color 0.3s, background-image 0.3s;
+    }
+
+
+     
+
+   
+
+     header {
+      display: flex;
+      height: 3.5rem;
+      background: linear-gradient(to bottom, #f7ca00a9, #db8c3100);
+      
+    }
+
+    .container {
+      position: relative;
+      width: 550px;
+      height: 500px;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      margin: 40px auto;
+      display: block;
+    }
+
+
+    .tela {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s ease;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      
+    }
+
+    .pagina-inicial {
+      background: #645a40;
+      color: #f7cb00;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .pagina-dificuldade {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: #645a40;
+      transform: translateY(-100%);
+      z-index: 1;
+    }
+
+
+    .card {
+      background: #f7cb00;
+      color: #463e20;
+      padding: 20px;
+      text-align: left;
+      width: 90%;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      margin-top: 2rem;
+      text-align: center;
+      
+    }
+
+    .bolinhas {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .bolinhas span {
+      width: 12px;
+      height: 12px;
+      background: #f5f5f5;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .botao-jogar {
+      background: #4ea54e;
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      width: 90%;
+      height: 15%;
+      margin-bottom: 2rem;
+      font-size: 1.5rem;
+    }
+
+    .seta {
+      cursor: pointer;
+      justify-content: center;
+      display: flex;
+      margin-top: 3rem;
+      
+
+    }
+
+    .titulo {
+      
+      margin-bottom: 20px;
+      text-align: center;
+      background: #f7cb00;
+      border: #f7cb00 10px solid;
+      border-radius: 10px;
+      color: #463e20;
+      width: 90%;
+    }
+
+    .opcoes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 1fr 1fr;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .opcao {
+      background: #ebebeb;
+      color: #463e20;
+      padding: 10px;
+      border-radius: 5px;
+      text-align: center;
+      justify-content: center;
+      font-weight: bold;
+      width: 150px;
+      height: 110px;
+      border: none;
+      font-size: 1.0rem;
+      transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.3s;
+    }
+
+    .opcao:hover {
+      transform: translateY(2px); /* afunda 2px */
+    }
+
+    .opcao.clicked {
+      background-color: #4ea54e;
+      color: #ffffff;
+    }
+
+    .opcao.disabled {
+      background-color: #cccccc;
+      color: #888888;
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+
+    .opcao.disabled:hover {
+      transform: none;
+    }
+   
+
+    .tamanho {
+        background: #f7cb00;
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .seta {
+        font-size: 20px;
+        margin: 0;
+        justify-content: center;
+        
+    }
+
+        .centralizar-btn {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-top: 2rem;
+    }
+
+    a{
+        text-decoration: none;
+    }
+    
+
+
+  </style>
+</head>
+<body>
+    <header>
+  </header>
+
+  <div class="container">
+    <!-- Página inicial -->
+    <div class="tela pagina-inicial" id="tela-inicial">
+      <div class="card">
+        <h1>Spyware e malware</h1>
+        <h3>6 questões</h3>
+        <div class="bolinhas">
+        <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <p>40pts</p>
+      </div>
+      <button class="botao-jogar" onclick="mostrarDificuldades()">Jogar</button>
+
+      <a href="inicio.html"><button class="tamanho"><i class="fas fa-arrow-left seta"></i></button></a>
+
+    </div>
+
+    <!-- Página de dificuldades -->
+    <div class="tela pagina-dificuldade" id="tela-dificuldade">
+      <h1 class="titulo">Escolha a dificuldade</h1>
+      <div class="opcoes">
+        <button class="opcao" data-url="./Q1Facil1.html">😄<br>Fácil</button>
+        <button class="opcao" data-url="./Q1Dificil1.html">😬<br>Difícil</button>
+        <button class="opcao disabled">🤯<br>Impossível</button>
+      </div>
+      <div class="centralizar-btn">
+        <button class="tamanho"><i class="fas fa-arrow-left seta" onclick="voltar()"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+    function mostrarDificuldades() {
+      document.getElementById('tela-inicial').style.transform = 'translateY(100%)';
+      document.getElementById('tela-dificuldade').style.transform = 'translateY(0)';
+    }
+
+    function voltar() {
+      document.getElementById('tela-inicial').style.transform = 'translateY(0)';
+      document.getElementById('tela-dificuldade').style.transform = 'translateY(-100%)';
+    }
+
+
+
+
+     document.querySelectorAll('.opcao').forEach(botao => {
+      botao.addEventListener('click', function () {
+        // Verifica se o botão está desabilitado
+        if (this.classList.contains('disabled')) {
+          return; // Não faz nada se estiver desabilitado
+        }
+
+        const destino = this.getAttribute('data-url');
+        const botaoAtual = this;
+
+        setTimeout(() => {
+          botaoAtual.classList.add('clicked');
+          setTimeout(() => {
+            window.location.href = destino;
+          }, 200); // espera um pouco depois de amarelar
+        }, 100); // espera 1 segundo antes de mudar a cor
+      });
+    });
+  </script>
+</body>
+</html>
+
+

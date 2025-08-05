@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Think Fast - Quiz</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Galindo&display=swap" rel="stylesheet">
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+
+
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: background-color 0.3s, color 0.3s;
+      font-family: 'Galindo', cursive;
+    }
+
+    body {
+      color: #ffff;
+      
+
+      background-image: url('./fundos/modoEscuro.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  
+  transition: background-color 0.3s, color 0.3s, background-image 0.3s;
+    }
+
+   
+    
+    header {
+      display: flex;
+      background: linear-gradient(to bottom, #f7ca00a9, #db8c3100);
+      height: 3.5rem;
+    }
+
+
+    .logo-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 65%;
+      height: 24rem;
+      margin-left: auto;
+      margin-right: auto;
+      
+      text-align: center;
+      padding: 1rem 0 2rem;
+      opacity: 0;
+      transform: translateY(-20px);
+      animation: fadeInUp 0.8s forwards 0.3s;
+      color: #463e20;
+    }
+
+    .logo {
+      background: linear-gradient(to bottom, #FBD344, #f7cb00);
+      width: 100%;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-sizing: border-box;
+    }
+
+    .logo img {
+      width: 250px;
+      
+    }
+
+    .tagline {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      font-weight: 400;
+    }
+
+    
+
+    .categorias {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 0.5rem auto 4rem;
+      gap: 1rem;
+      max-width: 1000px;
+      padding: 0 1rem;
+      animation: fadeInUp 0.8s forwards 0.9s;
+    }
+
+    
+
+    .categoria {
+      background: linear-gradient(to bottom, #FBD344, #f7cb00);
+      padding: 2rem;
+      width: 220px;
+      border-radius: 12px;
+      text-align: center;
+      font-weight: bold;
+      transition: transform 0.2s, filter 0.2s;
+      width: 220px;
+       height: 150px; 
+       align-items: center;
+       display: flex;
+    }
+    
+    a{
+        text-decoration: none;
+        color: #463e20;
+       
+    }
+
+    .categoria:hover {
+      transform: scale(1.05);
+      filter: brightness(0.9);
+    }
+
+    .categoria.disabled {
+      background: #cccccc;
+      color: #888888;
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+
+    .categoria.disabled:hover {
+      transform: none;
+      filter: none;
+    }
+
+    footer {
+      text-align: center;
+      height: 3.5rem;
+      align-items: center;
+      justify-content: center;
+       background: #645a40;
+      color: #f7cb00;
+      font-size: 0.9rem;
+      font-weight: 500;
+      display: flex;
+    }
+
+   
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+  </header>
+
+  <div class="logo-container">
+    <div class="logo">
+        <img src="./fundos/logo.png" alt="ThinkFast Logo" width="150" />
+        <div class="tagline">Teste seus conhecimentos. Aprenda se divertindo.</div>
+    </div>
+    
+  </div>
+
+
+  <section class="categorias">
+    <a href="Q1.html"><div class="categoria">🦠 Spyware e malware</div></a>
+    <div class="categoria disabled">❌ Ciberbullying e assédio online</div>
+    <div class="categoria disabled">📁 Crimes contra a propriedade intelectual</div>
+    <div class="categoria disabled">🎭 Falsificação digital e deepfakes</div>
+  </section>
+
+  <footer>
+    &copy; 2025 Think Fast | Feito pelo 2DS B</a>
+  </footer>
+
+
+  <!--animation: fadeInUp 0.8s forwards 0.6s;-->
+</body>
+</html>
