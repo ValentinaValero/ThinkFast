@@ -66,7 +66,7 @@
     }
 
     .pagina-inicial {
-      background: #645a40;
+      background: linear-gradient(to bottom, #645a40, #484231);
       color: #f7cb00;
       z-index: 2;
       display: flex;
@@ -86,7 +86,8 @@
 
 
     .card {
-      background: #f7cb00;
+      background: linear-gradient(to bottom, #FBD344, #f7cb00);
+      width: 100%;
       color: #463e20;
       padding: 20px;
       text-align: left;
@@ -125,6 +126,12 @@
       height: 15%;
       margin-bottom: 2rem;
       font-size: 1.5rem;
+      transition: transform 0.2s, filter 0.2s;
+    }
+
+    .botao-jogar:hover {
+      transform: scale(1.03);
+      filter: brightness(0.9);
     }
 
     .seta {
