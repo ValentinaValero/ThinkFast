@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cronômetro Regressivo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f4f4f4;
+    }
+
+    .timer-container {
+      width: 80%;
+      max-width: 500px;
+      background-color: #e0e0e0;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .progress-bar {
+      height: 20px;
+      background-color: yellow;
+      border-radius: 10px;
+      width: 100%;
+      transition: width 1s linear, background-color 1s ease;
+      margin-bottom: 10px;
+    }
+
+    .timer {
+      font-size: 3em;
+      font-weight: bold;
+      transition: color 1s ease;
+    }
+
+    .timer.red {
+      color: red;
+    }
+
+    .progress-bar.red {
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="timer-container">
+    <div class="progress-bar" id="progress-bar"></div>
+    <div id="timer-display" class="timer">40</div>
+  </div>
+
+  <script>
+    let totalTime = 40; // Tempo total do cronômetro em segundos
+    let timeLeft = totalTime;
+    const progressBar = document.getElementById('progress-bar');
+    const timerDisplay = document.getElementById('timer-display');
+
+    function updateTimer() {
+      // Atualiza o tempo no display
+      if (timeLeft < 0) timeLeft = 0; // Garantir que o tempo não vá para números negativos
+      timerDisplay.textContent = timeLeft;
+
+      // Atualiza a largura da barra de progresso
+      const progressPercentage = (timeLeft / totalTime) * 100;
+      progressBar.style.width = progressPercentage + '%';
+
+      // Muda a cor da barra e do cronômetro de forma suave quando restam 10 segundos
+      if (timeLeft <= 10) {
+        progressBar.classList.add('red');
+        timerDisplay.classList.add('red');
+      } else {
+        progressBar.classList.remove('red');
+        timerDisplay.classList.remove('red');
+      }
+
+      // Se o tempo acabar, redireciona
+      if (timeLeft === 0) {
+        window.location.href = "https://www.seusite.com"; // Substitua pelo URL de redirecionamento desejado
+      }
+
+      // Decrementa o tempo
+      timeLeft--;
+    }
+
+    // Inicia o cronômetro e atualiza a cada segundo
+    setInterval(updateTimer, 1000);
+  </script>
+</body>
+</html>
